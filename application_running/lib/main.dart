@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'sign_in/login_screen.dart';
+import 'Register/Register_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Application de Running',
-      home: LoginScreen(),
+      home: RegisterScreen(),
     );
   }
 }

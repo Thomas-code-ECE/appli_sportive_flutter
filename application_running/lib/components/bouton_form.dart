@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class RoundedButton extends StatelessWidget {
+class RoundedButtonSubmit extends StatelessWidget {
   final String text;
   final Function press;
   final Color color, textColor;
-  const RoundedButton({
+  const RoundedButtonSubmit({
     this.text,
     this.press,
     this.color,
@@ -20,7 +20,7 @@ class RoundedButton extends StatelessWidget {
       height: 50,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
-        child: FlatButton(
+        child: RaisedButton(
           color: color,
           onPressed: press,
           child: Text(
