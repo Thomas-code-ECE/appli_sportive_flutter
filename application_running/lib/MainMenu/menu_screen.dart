@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import '../components/bouton_form.dart';
-import '../components/field_form.dart';
-import '../components/boutton_GoToRegister.dart';
+import 'components/bouton_menu.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -10,35 +8,23 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen> {
   @override
-  final bouton_login = RoundedButtonSubmit(
+  final bouton_course_solo = RoundedButtonMenu(
     color: const Color(0xFFFF6E40),
     textColor: Colors.black,
-    text: "Se connecter",
-    press: () => {},
+    text: "Course en solo",
   );
-  final field_username = RoundedInputField(
-    hintText: "Username ou Email",
-    onChanged: (value) => {},
-    icon: Icon(
-      Icons.account_circle_outlined,
-      color: const Color(0xFFF5F0E1),
-    ),
+  final bouton_course_duo = RoundedButtonMenu(
+    color: const Color(0xFFFF6E40),
+    textColor: Colors.black,
+    text: "Course en duo",
   );
-  final field_password = RoundedInputField(
-    hintText: "Mot de passe",
-    onChanged: (value) => {},
-    icon: Icon(
-      Icons.lock_outline_rounded,
-      color: Colors.white,
-    ),
+  final bouton_statistiques = RoundedButtonMenu(
+    color: const Color(0xFFFF6E40),
+    textColor: Colors.black,
+    text: "Statistiques",
   );
   final logo_ece =
       Image.asset('assets/images/logo.png', height: 120, width: 120);
-
-  final bouton_inscription = RoundedButtonSwitchToRegister(
-      text: "S'inscrire",
-      color: const Color(0xFFFFC13B),
-      textColor: Colors.black);
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomPadding: false,
@@ -63,25 +49,17 @@ class _MenuScreenState extends State<MenuScreen> {
                     borderRadius: BorderRadius.circular(24)),
                 color: const Color(0xFF1E3D59),
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                      top: 20, bottom: 20, right: 35, left: 20),
+                  padding:
+                      const EdgeInsets.only(bottom: 20, right: 23, left: 20),
                   child: Container(
                       child: Column(
                     children: <Widget>[
-                      field_username,
-                      field_password,
-                      bouton_login,
+                      bouton_course_solo,
+                      bouton_course_duo,
+                      bouton_statistiques,
                     ],
                   )),
                 )),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 0, bottom: 0),
-                child: Column(
-                  children: <Widget>[bouton_inscription],
-                ),
-              ),
-            ),
           ],
         ),
       ),

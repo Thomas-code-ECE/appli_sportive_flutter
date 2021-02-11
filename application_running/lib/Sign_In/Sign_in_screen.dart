@@ -1,5 +1,6 @@
+import 'package:application_running/components/bouton_LogIn.dart';
 import 'package:flutter/material.dart';
-import '../components/bouton_form.dart';
+import '../components/bouton_LogIn.dart';
 import '../components/field_form.dart';
 import '../components/boutton_GoToRegister.dart';
 
@@ -10,11 +11,10 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   @override
-  final bouton_login = RoundedButtonSubmit(
+  final bouton_login = RoundedButtonLogIn(
     color: const Color(0xFFFF6E40),
     textColor: Colors.black,
     text: "Se connecter",
-    press: () => {},
   );
   final field_username = RoundedInputField(
     hintText: "Username ou Email",

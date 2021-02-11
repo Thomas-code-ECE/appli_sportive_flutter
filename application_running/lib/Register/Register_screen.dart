@@ -1,6 +1,6 @@
 import 'package:application_running/components/boutton_GoToSignIn.dart';
 import 'package:flutter/material.dart';
-import '../components/bouton_form.dart';
+import '../components/bouton_Register.dart';
 import '../components/field_form.dart';
 import '../components/boutton_GoToSignIn.dart';
 
@@ -15,11 +15,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     color: const Color(0xFFFF6E40),
     textColor: Colors.black,
     text: "Soumettre",
-    press: () => {
-      //   Navigator.push(
-      //     MaterialPageRoute(builder: (context) => SecondRoute()),
-      // );
-    },
   );
   final field_username = RoundedInputField(
     hintText: "Username",
