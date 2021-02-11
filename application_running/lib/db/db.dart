@@ -6,7 +6,7 @@ class BDD {
 
   Future<void> initDatabase() async {
     db = await OpenDatabase(
-      join(await getDatabasePath()."app_running")
+      join(await getDatabasePath()."app_running.db")
       onCreate: (db, Version){
         return db.excecute("
           DROP TABLE IF EXISTS `course`;
