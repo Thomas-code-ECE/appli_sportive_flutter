@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'components/bouton_menu.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -8,21 +7,6 @@ class MenuScreen extends StatefulWidget {
 
 class _MenuScreenState extends State<MenuScreen> {
   @override
-  final bouton_course_solo = RoundedButtonMenu(
-    color: const Color(0xFFFF6E40),
-    textColor: Colors.black,
-    text: "Course en solo",
-  );
-  final bouton_course_duo = RoundedButtonMenu(
-    color: const Color(0xFFFF6E40),
-    textColor: Colors.black,
-    text: "Course en duo",
-  );
-  final bouton_statistiques = RoundedButtonMenu(
-    color: const Color(0xFFFF6E40),
-    textColor: Colors.black,
-    text: "Statistiques",
-  );
   final logo_ece =
       Image.asset('assets/images/logo.png', height: 120, width: 120);
   Widget build(BuildContext context) {
@@ -54,9 +38,51 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Container(
                       child: Column(
                     children: <Widget>[
-                      bouton_course_solo,
-                      bouton_course_duo,
-                      bouton_statistiques,
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: 250,
+                        height: 50,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: RaisedButton(
+                            color: const Color(0xFFFF6E40),
+                            child: Text(
+                              "Course en solo",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: 250,
+                        height: 50,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: RaisedButton(
+                            color: const Color(0xFFFF6E40),
+                            child: Text(
+                              "Course en duo",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: 250,
+                        height: 50,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: RaisedButton(
+                            color: const Color(0xFFFF6E40),
+                            child: Text(
+                              "Statistique",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   )),
                 )),
