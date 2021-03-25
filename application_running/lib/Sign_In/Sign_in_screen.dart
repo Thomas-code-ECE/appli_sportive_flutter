@@ -18,7 +18,6 @@ class _SignInScreenState extends State<SignInScreen> {
     ["thomas.costa@hotmail.fr", "titi", "123"],
     ["jean.claude@edu.ece.fr", "tata", "oui"]
   ];
-  var UsernameExist = 0;
   var EmailExist = 0;
   var positionInlist = 0;
   String email;
@@ -95,10 +94,6 @@ class _SignInScreenState extends State<SignInScreen> {
                                           EmailExist = 1;
                                           positionInlist = i;
                                         }
-                                        if (users[i][1] == value) {
-                                          UsernameExist = 1;
-                                          positionInlist = i;
-                                        }
                                       }
                                       if (EmailExist == 0) {
                                         return "Cet utilisateur n'existe pas";
@@ -146,13 +141,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                   if (value.isEmpty) {
                                     return 'Veuillez saisir un mot de passe valide';
                                   } else {
-                                    if (EmailExist == 1 || UsernameExist == 1) {
+                                    if (EmailExist == 1) {
                                       if (users[positionInlist][2] != value) {
                                         return 'Le mot de passe saisi est incorrect';
                                       }
                                     } else {
                                       EmailExist = 0;
-                                      UsernameExist = 0;
                                     }
                                   }
                                   return null;

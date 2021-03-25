@@ -68,9 +68,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                             child: TextFormField(
                               validator: (value) {
-                                for (var i = 0; i < users.length; i++) {
-                                  if (users[i][1] == value) {
-                                    return "Ce nom d'utilisateur est déjà prit";
+                                if (value.isEmpty) {
+                                  return 'Veuillez saisir votre pseudo';
+                                } else {
+                                  for (var i = 0; i < users.length; i++) {
+                                    if (users[i][1] == value) {
+                                      return "Ce nom d'utilisateur est déjà prit";
+                                    }
                                   }
                                 }
                                 return null;
@@ -106,9 +110,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
                             child: TextFormField(
                               validator: (value) {
-                                for (var i = 0; i < users.length; i++) {
-                                  if (users[i][0] == value) {
-                                    return "Cet email est déjà utilisé par un autre utilisateur";
+                                if (value.isEmpty) {
+                                  return 'Ce champ est vide';
+                                } else {
+                                  if (!value.contains('@')) {
+                                    return "Votre email doit contenir un @";
+                                  } else {
+                                    if (!RegExp(
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+                                    ).hasMatch(value)) {
+                                      return "Veuillez saisir un Email valide";
+                                    } else {
+                                      for (var i = 0; i < users.length; i++) {
+                                        if (users[i][0] == value) {
+                                          return "Cet email est déjà utilisé par un autre utilisateur";
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                                 return null;
@@ -144,6 +162,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               child: TextFormField(
                                 // validator: ,
                                 // onChanged: onChanged,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Veuillez saisir un mot de passe';
+                                  }
+                                  return null;
+                                },
                                 cursorColor: const Color(0xFFF5F0E1),
                                 style:
                                     TextStyle(color: const Color(0xFFF5F0E1)),
