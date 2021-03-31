@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../course_chrono_screen/Course_chrono_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -60,9 +61,31 @@ class _MenuScreenState extends State<MenuScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: RaisedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CourseChrono()),
+                              );
+                            },
                             color: const Color(0xFFFF6E40),
                             child: Text(
                               "Course en duo",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: 250,
+                        height: 50,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: RaisedButton(
+                            color: const Color(0xFFFF6E40),
+                            child: Text(
+                              "Course chronométrée",
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
