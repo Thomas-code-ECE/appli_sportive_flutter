@@ -1,36 +1,60 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
-// class CourseSoloScreen extends StatefulWidget {
-//   @override
-//   _CourseSoloScreen createState() => _CourseSoloScreen();
-// }
+void main() {
+  runApp(MyApp());
+}
 
-// class _CourseSoloScreen extends State<CourseSoloScreen> {
-//   GoogleMapController mapController;
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
+  }
+}
 
-//   final LatLng _center = const LatLng(45.521563, -122.677433);
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
 
-//   void _onMapCreated(GoogleMapController controller) {
-//     mapController = controller;
-//   }
+class _MyHomePageState extends State<MyHomePage> {
+  LatLng _initialcameraposition = LatLng(20.5937, 78.9629);
+  GoogleMapController _controller;
+  Location _location = Location();
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('Maps Sample App'),
-//           backgroundColor: Colors.green[700],
-//         ),
-//         body: GoogleMap(
-//           onMapCreated: _onMapCreated,
-//           initialCameraPosition: CameraPosition(
-//             target: _center,
-//             zoom: 11.0,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  void _onMapCreated(GoogleMapController _cntlr) {
+    _controller = _cntlr;
+    _location.onLocationChanged.listen((l) {
+      _controller.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(target: LatLng(l.latitude, l.longitude), zoom: 15),
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          children: [
+            GoogleMap(
+              initialCameraPosition:
+                  CameraPosition(target: _initialcameraposition),
+              mapType: MapType.normal,
+              onMapCreated: _onMapCreated,
+              myLocationEnabled: true,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
